@@ -1,0 +1,36 @@
+@model CMCS.Web.Models.ClaimCreateViewModel
+@{
+    ViewData["Title"] = "Submit Claim";
+}
+<h2>Submit Claim</h2>
+
+<form asp-action="New" method="post" enctype="multipart/form-data" class="card p-3 shadow-sm">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="mb-3">
+        <label asp-for="HoursWorked" class="form-label"></label>
+        <input asp-for="HoursWorked" class="form-control" />
+        <span asp-validation-for="HoursWorked" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="HourlyRate" class="form-label"></label>
+        <input asp-for="HourlyRate" class="form-control" />
+        <span asp-validation-for="HourlyRate" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Notes" class="form-label"></label>
+        <textarea asp-for="Notes" rows="3" class="form-control"></textarea>
+        <span asp-validation-for="Notes" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Document" class="form-label"></label>
+        <input asp-for="Document" type="file" class="form-control" accept=".pdf,.docx,.xlsx" />
+        <span class="form-text">Allowed: .pdf, .docx, .xlsx • Max 10 MB</span>
+        <span asp-validation-for="Document" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-success btn-lg">Submit</button>
+    <a href="@Url.Action("Index")" class="btn btn-outline-secondary">Cancel</a>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
